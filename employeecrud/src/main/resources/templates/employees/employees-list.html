@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees Directory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h3>Employee Directory</h3>
+        <hr>
+        <a type="button" class="btn btn-primary" th:href="@{newEmployee}">Add New Employee</a>
+        <br><br>
+        <table class="table table-border table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email-Id</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="emp:${employees}">
+                <td th:text="${emp.firstName}"></td>
+                <td th:text="${emp.lastName}"></td>
+                <td th:text="${emp.email}"></td>
+                <td>
+                    <a type="button" class="btn btn-primary" th:href="@{update(empId=${emp.id})}">Update</a>
+                    <a type="button" class="btn btn-danger" th:href="@{delete(empId=${emp.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
